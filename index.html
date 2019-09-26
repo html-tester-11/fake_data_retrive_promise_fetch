@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	__url='https://htmltester11.gq/check_2/'
+ 	   async  function get_data(__url,k) 
+{
+  let response = await fetch(__url);
+  let data = await response.json()
+  
+ return JSON.stringify(data[k]);
+ 
+}
+
+	async function b(n)
+	{
+	let v=parseInt(n)
+	console.log(v,n)
+	     console.log(`called function  #1  ${arguments.callee.name}`)
+
+	if(isNaN(v))
+	{
+		return ('not a number')
+	}
+	else
+	{
+		return (get_data(__url,v))
+		
+		
+	}
+}
+	async function update()
+    {
+      var numString = document.getElementById('_word').value;
+    
+
+   
+      let ck=b(numString)
+    .then(function (ck)
+    {
+    	document.getElementById('container').innerHTML =ck;
+    	console.log(ck)
+    })
+    
+     
+    }
+
+</script>
+<input type="text" id="_word" size="70" onkeyup="update();"
+  br/>
+  <div id="container">  fake data retrive using promise</div>
+
+</body>
+</html>
